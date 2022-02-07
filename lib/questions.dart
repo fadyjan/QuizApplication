@@ -6,6 +6,8 @@ class Question extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(questionText);
+
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(30),
