@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/result.dart';
 import './questions.dart';
 import './answers.dart';
+import 'questions.dart';
+import 'quiz.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,37 +49,17 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text(
-            "Quiz App",
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            title: Text(
+              "Quiz App",
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.blue,
           ),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-        ),
-        body: _InitialIndex < QuestionsArray.length
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Question(
-                      QuestionsArray[_InitialIndex]['questionsText'] as String),
-                  ...(QuestionsArray[_InitialIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answers(_xyz, answer);
-                  }).toList(),
-                ],
-              )
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text("You Did IT !! :D"),
-                  ElevatedButton(
-                      onPressed: _ReloadQuiz, child: const Text("Reload Quiz"))
-                ],
-              ),
-      ),
+          body: _InitialIndex < QuestionsArray.length
+              ? Quiz(_xyz, QuestionsArray, _InitialIndex)
+              : Result(_ReloadQuiz)),
     );
   }
 }

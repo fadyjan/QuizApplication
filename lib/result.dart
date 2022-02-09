@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({Key? key}) : super(key: key);
+  final VoidCallback _ReloadQuiz;
+  Result(this._ReloadQuiz);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Text("You Did IT !! :D"),
+        ElevatedButton(onPressed: _ReloadQuiz, child: const Text("Reload Quiz"))
+      ],
+    );
   }
 }
